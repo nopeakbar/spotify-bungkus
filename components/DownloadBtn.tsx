@@ -8,27 +8,24 @@ export default function DownloadBtn() {
   const [loading, setLoading] = useState(false);
 
   const handleDownload = async (e: React.MouseEvent) => {
-    e.stopPropagation(); // Biar gak ke-trigger ganti slide saat klik tombol
+    e.stopPropagation(); 
     setLoading(true);
 
     try {
-      // 1. Cari elemen struk
       const element = document.getElementById('receipt-container');
       if (!element) throw new Error("Receipt element not found");
 
-      // 2. Trik: Tunggu 100ms biar browser selesai render style/font
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Tunggu sebentar biar render font/style sempurna
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-      // 3. Generate gambar dengan settingan Production
       const canvas = await html2canvas(element, {
-        backgroundColor: '#be185d', // Warna Pink-700 (sesuai slide summary) agar tidak transparan
-        scale: 3, // Resolusi tinggi (3x lipat biar tajam di HP)
-        useCORS: true, // WAJIB: Izinkan ambil aset external (font/image)
-        allowTaint: true, // WAJIB: Izinkan canvas "kotor" oleh aset luar
-        logging: false, // Matikan log biar bersih
+        backgroundColor: '#be185d', // Warna Pink sesuai tema
+        scale: 3, 
+        useCORS: true, // INI YANG BENAR: Gunakan CORS
+        // HAPUS allowTaint: true <-- INI BIANG KEROKNYA
+        logging: true, 
       });
 
-      // 4. Proses download
       const image = canvas.toDataURL("image/png", 1.0);
       const link = document.createElement('a');
       link.download = `My-Wrapped-${new Date().getFullYear()}.png`;

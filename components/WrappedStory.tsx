@@ -65,7 +65,7 @@ export const WrappedStory = ({ tracks, artists, topGenre, userName }: WrappedSto
               YOUR <br/> WRAPPED
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-white text-lg font-medium">
-              Weve collected your stats. <br/> Lets dive in anjay.
+              Weve collected your stats. <br/> Lets dive in.
             </motion.p>
             <p className="text-white/60 text-xs mt-10 animate-pulse uppercase tracking-widest">(Tap card to start)</p>
           </div>
@@ -101,7 +101,13 @@ export const WrappedStory = ({ tracks, artists, topGenre, userName }: WrappedSto
                   className="flex items-center gap-4 bg-black/20 p-3 rounded-xl backdrop-blur-sm border border-white/10"
                 >
                   <span className="text-4xl font-black text-white/50 w-8">#{i + 1}</span>
-                  <img src={artist.images[1]?.url || artist.images[0]?.url} className="w-16 h-16 rounded-full object-cover border-2 border-white" alt="" />
+                  {/* UPDATE: Added crossOrigin */}
+                  <img 
+                    src={artist.images[1]?.url || artist.images[0]?.url} 
+                    crossOrigin="anonymous" 
+                    className="w-16 h-16 rounded-full object-cover border-2 border-white" 
+                    alt="" 
+                  />
                   <span className="text-xl font-bold text-white truncate">{artist.name}</span>
                 </motion.div>
               ))}
@@ -114,8 +120,10 @@ export const WrappedStory = ({ tracks, artists, topGenre, userName }: WrappedSto
         return (
           <div className="flex flex-col items-center justify-center h-full p-8 text-center">
             <p className="text-white font-bold mb-6 text-xl uppercase tracking-widest">On Repeat</p>
+            {/* UPDATE: Added crossOrigin */}
             <motion.img 
                src={topTrack?.album.images[0]?.url} 
+               crossOrigin="anonymous"
                initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
                className="w-64 h-64 shadow-2xl mb-8 object-cover rounded-md"
             />
@@ -140,7 +148,12 @@ export const WrappedStory = ({ tracks, artists, topGenre, userName }: WrappedSto
                initial={{ rotateY: 90 }} animate={{ rotateY: 0 }} transition={{ duration: 0.8 }}
                className="bg-white p-4 pb-6 rounded-sm shadow-2xl w-60 transform rotate-3 text-black relative z-10"
              >
-                <img src={deepCutTrack?.album.images[0]?.url} className="w-full h-auto mb-4 grayscale contrast-125" />
+                {/* UPDATE: Added crossOrigin */}
+                <img 
+                  src={deepCutTrack?.album.images[0]?.url} 
+                  crossOrigin="anonymous"
+                  className="w-full h-auto mb-4 grayscale contrast-125" 
+                />
                 <p className="font-bold text-lg leading-none line-clamp-2">{deepCutTrack?.name}</p>
                 <p className="text-sm text-gray-600 mt-1 truncate">{deepCutTrack?.artists[0].name}</p>
              </motion.div>
@@ -159,9 +172,11 @@ export const WrappedStory = ({ tracks, artists, topGenre, userName }: WrappedSto
               <h2 className="text-4xl font-black text-white mb-6 text-center uppercase tracking-tighter">Wall of Fame</h2>
               <div className="grid grid-cols-3 gap-3">
                  {tracks.slice(0, 9).map((track, i) => (
+                    // UPDATE: Added crossOrigin
                     <motion.img 
                       key={i}
                       src={track.album.images[1]?.url || track.album.images[0]?.url}
+                      crossOrigin="anonymous"
                       initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.05 }}
                       className="w-full aspect-square object-cover rounded-md shadow-lg"
                     />
