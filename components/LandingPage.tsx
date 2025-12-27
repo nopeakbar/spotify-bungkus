@@ -116,7 +116,7 @@ export default function LandingPage() {
                   <h3 className="text-white font-bold text-lg mb-2">Can't Login?</h3>
                   <p className="text-gray-400 text-sm mb-4 leading-relaxed">
                     Access is limited to 25 users. 
-                    <br/>Enter your email to join the whitelist.
+                    <br/>Enter your email to join yh.
                   </p>
 
                   <form onSubmit={handleRequest} className="flex flex-col sm:flex-row gap-2">
