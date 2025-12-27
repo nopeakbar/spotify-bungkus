@@ -65,7 +65,7 @@ export const WrappedStory = ({ tracks, artists, topGenre, userName }: WrappedSto
               YOUR <br/> WRAPPED
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-white text-lg font-medium">
-              Weve collected your stats. <br/> Lets dive in.
+              Weve collected your stats. <br/> Lets dive in anjay.
             </motion.p>
             <p className="text-white/60 text-xs mt-10 animate-pulse uppercase tracking-widest">(Tap card to start)</p>
           </div>
